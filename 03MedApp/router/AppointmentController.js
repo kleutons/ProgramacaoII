@@ -1,7 +1,7 @@
 import express from "express";
 import AppointmentService from "../services/AppointmentService.js";
 
-let router = express.Router();
+const router = express.Router();
 
 router.get("/appointments", async (req, res) => {
   try {
@@ -56,6 +56,21 @@ router.delete("/appointment/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const appointment = await AppointmentService.deleteAppointment(id);
+    res.send(appointment);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+router.put("/appointment/reschedule/:id", async (req, res) => {
+  const { id } = req.params;
+  const { date } = req.body;
+
+  try {
+    let appointment = await AppointmentService.getAppointment(id);
+    appointment.date = date;
+    appointment = await AppointmentService.updateAppointment(id, { date });
     res.send(appointment);
   } catch (err) {
     console.log(err);

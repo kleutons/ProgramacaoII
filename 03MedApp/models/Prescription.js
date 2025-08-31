@@ -1,4 +1,5 @@
 import { mongoose } from "mongoose";
+import Appointment from "./Appointment.js";
 
 const Schema = mongoose.Schema;
 
@@ -9,6 +10,13 @@ const prescriptionSchema = new Schema({
   appointmentId: {
     type: String,
     required: [true, "Appointment ID is required."],
+    validate: {
+      validator: function (v) {
+        const id = new mongoose.Types.ObjectId(v); // convertendo uma string em objeto ID para ser encontrado no banco
+        return Appointment.exists({ _id: id });
+      },
+      message: (props) => `AppointmentID ${props.value} not found.`,
+    },
   },
   medicine: {
     type: String,

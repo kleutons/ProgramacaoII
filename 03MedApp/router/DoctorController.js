@@ -26,7 +26,7 @@ router.get("/doctor/:id", async (req, res) => {
 });
 
 router.post("/doctor", async function (req, res) {
-  const { name, login, password, medicalSpecialty, medicalRegistration, email, phone } = req.body;
+  const { name, login, password, email, phone, medicalSpecialty, medicalRegistration } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
     const doctor = await DoctorService.saveDoctor({
@@ -47,7 +47,7 @@ router.post("/doctor", async function (req, res) {
 
 router.put("/doctor/:id", async (req, res) => {
   const { id } = req.params;
-  const { name, login, password, medicalSpecialty, medicalRegistration, email, phone } = req.body;
+  const { name, login, password, email, phone, medicalSpecialty, medicalRegistration } = req.body;
 
   try {
     const doctor = await DoctorService.updateDoctor(id, {
