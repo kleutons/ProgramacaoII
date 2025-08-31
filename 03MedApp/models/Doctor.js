@@ -29,11 +29,11 @@ const doctorSchema = new Schema({
     type: String,
     require: [true, "Phone number contact is required"],
   },
-  mediacalSpecialty: {
+  medicalSpecialty: {
     type: String,
     require: [true, "Mediacal Specialty name is required"],
   },
-  mediacalRegistration: {
+  medicalRegistration: {
     type: String,
     require: [true, "Mediacal Registration name is required"],
     unique: true,
