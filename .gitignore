@@ -1,0 +1,27 @@
+# Ignora todas as pastas node_modules em qualquer subdiretório
+**/node_modules/
+
+# Ignora arquivos de log do npm
+**/npm-debug.log*
+
+# Ignora arquivos de log do yarn
+**/yarn-error.log*
+
+# Ignora arquivos de ambiente
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Ignora diretórios de build comuns
+**/.next/
+**/dist/
+**/build/
+
+# Ignora arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Ignora arquivos temporários
+*.log
+*.tmp
+*.swp
